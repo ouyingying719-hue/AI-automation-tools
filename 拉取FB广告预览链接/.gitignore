@@ -1,0 +1,14 @@
+config.json
+ad_cache.json
+tracker.json
+run.log
+*.log
+素材信息.xlsx
+*.xlsx
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.DS_Store
+Thumbs.db
