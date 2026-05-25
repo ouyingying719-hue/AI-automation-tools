@@ -1,0 +1,28 @@
+{
+  "_comment": "复制此文件为 config.json 后填入你的真实凭证。绝不要提交真实 config.json 到 Git。",
+  "access_token": "REPLACE_WITH_YOUR_FB_LONG_LIVED_TOKEN",
+  "ad_account_ids": [
+    "act_REPLACE_WITH_AD_ACCOUNT_ID_1",
+    "act_REPLACE_WITH_AD_ACCOUNT_ID_2"
+  ],
+  "excel_path": "素材信息.xlsx",
+  "sheet_name": "素材信息",
+  "name_column": "名称",
+  "preview_column": "预览链接",
+  "delay_hours": 24,
+  "api_version": "v19.0",
+  "page_size": 50,
+  "request_timeout": 120,
+  "incremental_buffer_minutes": 30,
+  "log_file": "run.log",
+  "tracker_file": "tracker.json",
+  "ad_cache_file": "ad_cache.json",
+  "proxy": null,
+  "routing_rules": [
+    {
+      "_comment": "示例: 含「关键词A」的素材优先去某些账户查找,找不到再降级到其他账户",
+      "keywords": ["关键词A", "关键词B"],
+      "accounts": ["act_xxxxxxx"]
+    }
+  ]
+}
