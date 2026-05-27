@@ -1,0 +1,318 @@
+{
+  "version": 1,
+  "boundary": {
+    "mode": "offline_writeback_dry_run",
+    "no_smartbi_login": true,
+    "no_upload": true,
+    "no_external_write": true,
+    "real_writeback_requires": [
+      "--execute",
+      "--confirm-writeback",
+      "SMARTBI_USERNAME",
+      "SMARTBI_PASSWORD"
+    ]
+  },
+  "tasks": {
+    "course_city_cost_writeback": {
+      "enabled": true,
+      "kind": "SMARTBI_EXCEL_WRITEBACK",
+      "target": {
+        "alias": "课包城市消耗数据回写",
+        "path": "YOUR_BI_PATH/课包城市消耗数据回写",
+        "path_status": "verified_by_catalog_probe_20260525",
+        "report_id": "YOUR_IMPORT_CONFIG_REPORT_ID_TASK1",
+        "type": "DAQ_IMPORTCONFIG"
+      },
+      "post_verify": {
+        "report": {
+          "alias": "课包城市消耗周报填报数据",
+          "path": "YOUR_BI_PATH/课包城市消耗周报填报数据",
+          "report_id": "YOUR_VERIFY_REPORT_ID_TASK1",
+          "type": "SPREADSHEET_REPORT",
+          "inspect_status": "verified_by_inspect_report_20260525"
+        },
+        "parameters": {
+          "开始日期": "2026-05-01",
+          "结束日期": "2026-05-25",
+          "消耗数据投放平台": "",
+          "消耗课包": ""
+        },
+        "key_columns": [
+          "日期",
+          "主投学科",
+          "平台",
+          "区域细分",
+          "投放账户",
+          "广告计划id",
+          "广告计划名称",
+          "广告组id",
+          "广告组名称",
+          "广告id",
+          "广告名称"
+        ],
+        "compare_columns": [
+          "日期",
+          "主投学科",
+          "平台",
+          "区域细分",
+          "投放账户",
+          "广告计划id",
+          "广告计划名称",
+          "广告组id",
+          "广告组名称",
+          "广告id",
+          "广告名称",
+          "消耗"
+        ]
+      },
+      "input": {
+        "allowed_dirs": [
+          "."
+        ],
+        "filename_pattern": "^课包城市消耗数据回写_输出\\.xlsx$",
+        "workbook_type": "xlsx",
+        "sheet_name": "Sheet1",
+        "instruction_row": 1,
+        "header_row": 4,
+        "data_start_row": 5,
+        "max_rows": 5000
+      },
+      "schema": {
+        "key_columns": [
+          "日期",
+          "主投学科",
+          "平台",
+          "区域细分",
+          "投放账户",
+          "广告计划id",
+          "广告计划名称",
+          "广告组id",
+          "广告组名称",
+          "广告id",
+          "广告名称"
+        ],
+        "expected_headers": [
+          "日期",
+          "主投学科",
+          "平台",
+          "区域细分",
+          "投放账户",
+          "广告计划id",
+          "广告计划名称",
+          "广告组id",
+          "广告组名称",
+          "广告id",
+          "广告名称",
+          "广告素材id",
+          "广告素材名称",
+          "笔记ID",
+          "曝光",
+          "点击",
+          "覆盖人数",
+          "链接点击量",
+          "购物",
+          "潜在客户数",
+          "消息发起次数",
+          "消耗类型",
+          "消耗",
+          "行动按钮点击量",
+          "视频播放进度达25%的次数",
+          "视频播放进度达50%的次数",
+          "视频播放进度达75%的次数",
+          "视频播放进度达95%的次数",
+          "视频播放进度达100%的次数",
+          "开始投放日期",
+          "上传日期"
+        ],
+        "required_non_empty": [
+          "日期",
+          "主投学科",
+          "平台",
+          "区域细分",
+          "投放账户",
+          "广告计划id",
+          "广告计划名称",
+          "广告组id",
+          "广告组名称",
+          "广告id",
+          "广告名称"
+        ],
+        "id_columns_zero_allowed": [
+          "广告计划id",
+          "广告组id",
+          "广告id",
+          "广告素材id",
+          "笔记ID"
+        ],
+        "date_columns": [
+          "日期",
+          "开始投放日期",
+          "上传日期"
+        ],
+        "numeric_columns": [
+          "曝光",
+          "点击",
+          "覆盖人数",
+          "链接点击量",
+          "购物",
+          "潜在客户数",
+          "消息发起次数",
+          "消耗",
+          "行动按钮点击量",
+          "视频播放进度达25%的次数",
+          "视频播放进度达50%的次数",
+          "视频播放进度达75%的次数",
+          "视频播放进度达95%的次数",
+          "视频播放进度达100%的次数"
+        ]
+      }
+    },
+    "ad_account_writeback": {
+      "enabled": true,
+      "kind": "SMARTBI_EXCEL_WRITEBACK",
+      "target": {
+        "alias": "投放账户数据回写填报模板",
+        "path": "YOUR_BI_PATH/投放账户数据回写填报模板",
+        "report_id": "YOUR_IMPORT_CONFIG_REPORT_ID_TASK2",
+        "type": "DAQ_IMPORTCONFIG"
+      },
+      "post_verify": {
+        "report": {
+          "alias": "投放账户数据回写表（开发中）",
+          "path": "YOUR_BI_PATH/投放账户数据回写表（开发中）",
+          "report_id": "YOUR_VERIFY_REPORT_ID_TASK2",
+          "type": "SPREADSHEET_REPORT",
+          "source": "registry_file"
+        },
+        "parameters": {
+          "开始日期": "{import_date}",
+          "结束日期": "{import_date}"
+        },
+        "key_columns": [
+          "日期",
+          "主投学科",
+          "平台",
+          "区域细分",
+          "投放账户",
+          "广告计划id",
+          "广告计划名称",
+          "广告组id",
+          "广告组名称",
+          "广告id",
+          "广告名称"
+        ],
+        "compare_columns": [
+          "日期",
+          "主投学科",
+          "平台",
+          "区域细分",
+          "投放账户",
+          "广告id",
+          "广告名称",
+          "消耗"
+        ]
+      },
+      "input": {
+        "allowed_dirs": [
+          "."
+        ],
+        "filename_pattern": "^投放账户数据回写填报模板_输出\\.xlsx$",
+        "workbook_type": "xlsx",
+        "sheet_name": "Sheet1",
+        "instruction_row": 1,
+        "header_row": 4,
+        "data_start_row": 5,
+        "max_rows": 5000
+      },
+      "schema": {
+        "key_columns": [
+          "日期",
+          "主投学科",
+          "平台",
+          "区域细分",
+          "投放账户",
+          "广告计划id",
+          "广告计划名称",
+          "广告组id",
+          "广告组名称",
+          "广告id",
+          "广告名称"
+        ],
+        "expected_headers": [
+          "日期",
+          "主投学科",
+          "平台",
+          "区域细分",
+          "投放账户",
+          "广告计划id",
+          "广告计划名称",
+          "广告组id",
+          "广告组名称",
+          "广告id",
+          "广告名称",
+          "广告素材id",
+          "广告素材名称",
+          "笔记ID",
+          "曝光",
+          "点击",
+          "覆盖人数",
+          "链接点击量",
+          "购物",
+          "潜在客户数",
+          "消息发起次数",
+          "消耗类型",
+          "消耗",
+          "行动按钮点击量",
+          "视频播放进度达25%的次数",
+          "视频播放进度达50%的次数",
+          "视频播放进度达75%的次数",
+          "视频播放进度达95%的次数",
+          "视频播放进度达100%的次数",
+          "开始投放日期",
+          "上传日期"
+        ],
+        "required_non_empty": [
+          "日期",
+          "主投学科",
+          "平台",
+          "区域细分",
+          "投放账户",
+          "广告计划id",
+          "广告计划名称",
+          "广告组id",
+          "广告组名称",
+          "广告id",
+          "广告名称"
+        ],
+        "id_columns_zero_allowed": [
+          "广告计划id",
+          "广告组id",
+          "广告id",
+          "广告素材id",
+          "笔记ID"
+        ],
+        "date_columns": [
+          "日期",
+          "开始投放日期",
+          "上传日期"
+        ],
+        "numeric_columns": [
+          "曝光",
+          "点击",
+          "覆盖人数",
+          "链接点击量",
+          "购物",
+          "潜在客户数",
+          "消息发起次数",
+          "消耗",
+          "行动按钮点击量",
+          "视频播放进度达25%的次数",
+          "视频播放进度达50%的次数",
+          "视频播放进度达75%的次数",
+          "视频播放进度达95%的次数",
+          "视频播放进度达100%的次数"
+        ]
+      }
+    }
+  }
+}

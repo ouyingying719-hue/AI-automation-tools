@@ -1,0 +1,19 @@
+# 敏感配置
+.env
+
+# 中间产物（每次运行重新生成）
+思维全-每日导消耗.xlsx
+思维美术广告消耗-KOL-导入BI_输出.xlsx
+课包城市消耗数据回写_输出.xlsx
+投放账户数据回写填报模板_输出.xlsx
+run_log.txt
+
+# 规则表（含业务数据）
+FB账户消耗底表.xlsx
+
+# Chrome profile（如有残留）
+.chrome_bi_profile/
+
+# Python
+__pycache__/
+*.pyc
