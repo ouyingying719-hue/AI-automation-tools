@@ -1,5 +1,0 @@
-.env
-.chrome_bi_profile/
-*.xlsx
-run_log.txt
-__pycache__/
