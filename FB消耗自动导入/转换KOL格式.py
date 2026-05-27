@@ -44,6 +44,11 @@ def load_country_map(wb):
         code = r[1]
         if code and cn and str(code).strip() != '-':
             m[str(code).strip()] = str(cn).strip()
+    # 地区名称修正：BI 要求带"中国"前缀
+    fix = {'澳门': '中国澳门', '香港': '中国香港', '台湾': '中国台湾'}
+    for k, v in m.items():
+        if v in fix:
+            m[k] = fix[v]
     return m
 
 
