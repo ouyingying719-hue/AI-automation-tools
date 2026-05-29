@@ -1,0 +1,41 @@
+{
+  "_comment": "FB 主页定时发帖配置。复制为 config.json 后修改。",
+
+  "access_token": "粘贴你的 access_token（可以是 User Token，脚本会自动换 Page Token）",
+  "page": "your_page_vanity_or_id",
+  "_page_note": "可以填 vanity 名（如 yourpagename）或纯数字 page_id；脚本启动时会解析",
+
+  "proxy": null,
+  "_proxy_note": "国内访问 FB 一般要走代理，例如 http://127.0.0.1:7890；不需要代理填 null。也可以通过环境变量 HTTPS_PROXY 设置",
+
+  "api_version": "v19.0",
+
+  "input_file": "posts.xlsx",
+  "sheet_name": "Sheet1",
+  "columns": {
+    "caption": "文案",
+    "media": ["素材1", "素材2", "素材3", "素材4", "素材5", "素材6", "素材7", "素材8", "素材9", "素材10"],
+    "schedule": "定时时间",
+    "_caption_note": "文案列名",
+    "_media_note": "依次找这些列；空单元格跳过；按列顺序决定多图顺序",
+    "_schedule_note": "定时时间列名（可选）。表里填了就以表为准；不填或留空则按下面 daily_slots 自动排。格式 '2026-06-05 14:30'"
+  },
+
+  "media_root": "C:\\path\\to\\your\\media\\folder",
+  "_media_root_note": "脚本会递归扫这个目录，按文件名（含后缀）精确匹配。支持本地路径或 UNC 路径（如 \\\\\\\\server\\\\share\\\\dir）",
+
+  "schedule": {
+    "start_date": "tomorrow",
+    "_start_date_note": "today / tomorrow / 2026-06-01；从这天开始排",
+    "daily_slots": ["10:00"],
+    "_daily_slots_note": "每天的固定发布时段（24 小时制，本地时区）",
+    "timezone": "Asia/Shanghai",
+    "skip_weekends": false
+  },
+
+  "video_extensions": [".mp4", ".mov", ".avi", ".mkv", ".m4v"],
+  "image_extensions": [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".webp"],
+
+  "log_file": "run.log",
+  "result_file": "result.csv"
+}

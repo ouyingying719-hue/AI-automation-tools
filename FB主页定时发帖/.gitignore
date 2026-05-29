@@ -1,0 +1,7 @@
+config.json
+*.log
+result*.csv
+posts.xlsx
+__pycache__/
+*.pyc
+.env
